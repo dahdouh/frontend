@@ -1,0 +1,106 @@
+<mat-card appearance="outlined">
+  <mat-card-actions>
+    <button
+      class="mat-button"
+      mat-raised-button
+      color="primary"
+      [routerLink]="['/admin/partners/create']"
+      style="margin-left: 10px"
+    >
+      Create partner
+    </button>
+  </mat-card-actions>
+  <mat-card-content>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource" #partnerTable>
+        <ng-container matColumnDef="alias">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by alias"
+          >
+            Alias
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.alias }}</td>
+        </ng-container>
+        <ng-container matColumnDef="type">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by type"
+          >
+            Type
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.type }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="direction">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by direction"
+          >
+            Direction
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.direction }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="application">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by application"
+          >
+            Application
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.application }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="flowType">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by flowType"
+          >
+            Flow type
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.flowType }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by description"
+          >
+            Description
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.description }}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+          <th mat-header-cell *matHeaderCellDef>Action</th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-stroked-button (click)="delete(element.id)">
+              Delete
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 20]"
+        showFirstLastButtons
+        aria-label="Select page of periodic elements"
+      >
+      </mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
