@@ -1,0 +1,76 @@
+<mat-card appearance="outlined">
+  <mat-card-content>
+    <h1>Create partner</h1>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+      <mat-form-field class="element-full-width">
+        <mat-label>Alias</mat-label>
+        <input matInput placeholder="alias" formControlName="alias" />
+        <mat-error *ngIf="form.get('alias')?.hasError('required')">
+          Alias Field is required
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="element-full-width">
+        <mat-label>Type</mat-label>
+        <input matInput placeholder="type" formControlName="type" />
+        <mat-error *ngIf="form.get('type')?.hasError('required')">
+          Type Field is required
+        </mat-error>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Direction</mat-label>
+        <select matNativeControl required formControlName="direction">
+          <option value="INBOUND">INBOUND</option>
+          <option value="OUTBOUND">OUTBOUND</option>
+        </select>
+      </mat-form-field>
+      <br />
+
+      <mat-form-field class="element-full-width">
+        <mat-label>Application</mat-label>
+        <input
+          matInput
+          placeholder="application"
+          formControlName="application"
+        />
+      </mat-form-field>
+      <br />
+
+      <mat-form-field>
+        <mat-label>Flow type</mat-label>
+        <select matNativeControl required formControlName="flowType">
+          <option value="MESSAGE">MESSAGE</option>
+          <option value="ALERTING">ALERTING</option>
+          <option value="NOTIFICATION">NOTIFICATION</option>
+        </select>
+      </mat-form-field>
+      <br />
+      <mat-form-field class="element-full-width">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          formControlName="description"
+          placeholder="Partner description"
+        ></textarea>
+        <mat-error *ngIf="form.get('description')?.hasError('required')">
+          Description Field is required
+        </mat-error>
+      </mat-form-field>
+      <br />
+      <mat-card-actions>
+        <button
+          class="mat-button"
+          mat-raised-button
+          color="primary"
+          style="margin-left: 10px"
+        >
+          Submit
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card-content>
+</mat-card>
